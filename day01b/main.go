@@ -17,24 +17,19 @@ func main() {
 
 	for i, items := range elfs {
 		for _, cal := range strings.Split(items, "\n") {
-			if cal, err := strconv.Atoi(cal); err == nil {
-				cals[i] += cal
+			cal, err := strconv.Atoi(cal)
+			if err != nil {
+				panic(err)
 			}
+			cals[i] += cal
 		}
 	}
 
 	sort.Sort(sort.Reverse(sort.IntSlice(cals)))
-	fmt.Println("Answear:", Sum(cals[:3]))
-}
 
-type Number interface {
-	int
-}
-
-func Sum[T Number](s []T) T {
-	var sum T
-	for _, v := range s {
-		sum += v
+	sum := 0
+	for _, cal := range cals[:3] {
+		sum += cal
 	}
-	return sum
+	fmt.Println("Answear:", sum)
 }

@@ -16,9 +16,11 @@ func main() {
 
 	for i, items := range elfs {
 		for _, cal := range strings.Split(items, "\n") {
-			if cal, err := strconv.Atoi(cal); err == nil {
-				cals[i] += cal
+			cal, err := strconv.Atoi(cal)
+			if err != nil {
+				panic(err)
 			}
+			cals[i] += cal
 		}
 	}
 
