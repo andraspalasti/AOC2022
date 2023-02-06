@@ -39,3 +39,10 @@ func Min[T number](nums ...T) T {
 	}
 	return min
 }
+
+func Abs[T float | signed](n T) T {
+	if n < 0 {
+		return -n
+	}
+	return n
+}
